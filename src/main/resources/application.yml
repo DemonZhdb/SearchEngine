@@ -18,6 +18,16 @@ spring:
           batch_size: 10
           order_inserts: true
 
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            BasicBinder: TRACE
+      springframework:
+           web: debug
 
 url.default: /api
 
