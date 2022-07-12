@@ -8,14 +8,13 @@ import org.jsoup.Jsoup;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Repository
-public class Lemmatisator {
+public class lemmatisator {
 
     private HashMap<String, Integer> wordsMap;
 
@@ -24,11 +23,10 @@ public class Lemmatisator {
     private final String regexpText = "\\s*(\\s|\\?|\\||»|«|\\*|,|!|\\.)\\s*";
     private final LuceneMorphology luceneMorph = new RussianLuceneMorphology();
 
-    public Lemmatisator() throws IOException {
+    public lemmatisator() throws IOException {
     }
 
-    public HashMap<String, Integer> textToLemma(String sourceText)
-            throws IOException, SQLException {
+    public HashMap<String, Integer> textToLemma(String sourceText) {
         wordsMap = new HashMap<>();
         String text = sourceText.trim();
 
@@ -63,7 +61,7 @@ public class Lemmatisator {
         String textForSearchQuery = Jsoup.parse(content).getElementsContainingOwnText(textQuery).text();
         Pattern pattern = Pattern.compile(textQuery);
         Matcher matcher = pattern.matcher(textForSearchQuery);
-        String snippet = "";
+        String snippet ;
         if (matcher.find()) {
             int beginIndex = matcher.start() > 80 ?
                     textForSearchQuery.lastIndexOf(' ', matcher.start() - 60) : 0;

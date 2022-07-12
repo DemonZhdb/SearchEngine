@@ -118,13 +118,13 @@ public class IndexService {
 
         }
         Document doc = getDocumentPage(url, siteInDB);
-        entityService.addEntities(doc, url, codeResponse, siteOfPage, pageId);
+        entityService.addEntitiesToDB(doc, url, codeResponse, siteOfPage, pageId);
         entityService.updateSite(siteOfPage, StatusIndexing.INDEXED);
         return new ResponseTrue("true");
     }
 
     public Document getDocumentPage(String url, Site site) throws SQLException,
-        ParserConfigurationException, IOException {
+            ParserConfigurationException, IOException {
         Set<String> linksSet = Collections.synchronizedSet(new HashSet<>());
         ParserLinks parserLinks = new ParserLinks(url, site, linksSet);
         parserLinks.setParserConfig(parserConfig);

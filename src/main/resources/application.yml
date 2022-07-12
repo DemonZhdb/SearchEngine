@@ -17,12 +17,19 @@ spring:
           batch_size: 10
           order_inserts: true
 
-url.default: /api
+  security:
+    user:
+      name: user
+      password: user
+      roles: user
+
 
 configparse:
     useragent: FlySearchBot/1.0
     referrer: http://www.google.com
     timeout: 10000
+
+url.default: /api
 
 configsites:
   sites:
@@ -32,3 +39,4 @@ configsites:
       name: Булгаковский Дом
     - url: https://www.playback.ru
       name: PlayBack.ru
+

@@ -51,7 +51,7 @@ public class ParserLinks extends RecursiveAction {
             if (linksSet.add(url)) {
                 try {
                     Document document = getDocument(url);
-                    entityService.addEntities(document, url, codeResponse, site, 0);
+                    entityService.addEntitiesToDB(document, url, codeResponse, site, 0);
                     Elements resultLinks = document.select("a[href]");
                     if (!(resultLinks == null || resultLinks.size() == 0)) {
                         //  список отфильтрованных дочерних ссылок
