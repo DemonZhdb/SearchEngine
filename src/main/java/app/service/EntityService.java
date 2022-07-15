@@ -3,7 +3,7 @@ package app.service;
 
 import app.model.*;
 import app.repository.*;
-import app.util.lemmatisator;
+import app.util.Lemmatisator;
 import lombok.Data;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,7 +140,7 @@ public class EntityService {
         }
         Page page = addPageToDB(path, code, content, site, pageId);
         if (code == 200) {
-            lemmatisator lemmatisator = new lemmatisator();
+            Lemmatisator lemmatisator = new Lemmatisator();
             Map<String, Float> pageLemmaMap = new HashMap();
             Iterable<Field> fields = findAllFields();
             for (Field field : fields) {

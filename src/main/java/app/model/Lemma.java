@@ -7,7 +7,7 @@ import java.util.Collection;
 
 @Entity
 @Data
-@Table(name = "lemma", schema = "search_engine")
+@Table(name = "lemma" )
 public class Lemma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

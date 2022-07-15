@@ -4,6 +4,7 @@ import app.DTO.Detailed;
 import app.DTO.StatisticsOut;
 import app.DTO.StatisticsResult;
 import app.DTO.Total;
+import app.model.Site;
 import app.repository.LemmaRepository;
 import app.repository.PageRepository;
 import app.repository.SiteRepository;
@@ -26,7 +27,6 @@ public class StatisticsService {
     private LemmaRepository lemmaRepository;
 
     public StatisticsResult getStatistics() {
-
         Total total = new Total(siteRepository.count(), pageRepository.count(),
                 lemmaRepository.count(), true);
 

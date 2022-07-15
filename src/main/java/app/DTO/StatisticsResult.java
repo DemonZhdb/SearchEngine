@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class StatisticsResult {
 
     private String result;
+
     private StatisticsOut statistics;
 
     public StatisticsResult(String result, StatisticsOut statistics) {

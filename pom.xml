@@ -14,6 +14,15 @@
         <version>2.6.4</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages - Russian Morphology</name>
+            <url>https://maven.pkg.github.com/skillbox-java/russianmorphology</url>
+        </repository>
+    </repositories>
+
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -50,6 +59,12 @@
             <version>2.7.0</version>
 
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.10</version>
+        </dependency>
+
 
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
@@ -74,6 +89,36 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>morph</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.analysis</groupId>
+            <artifactId>morphology</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>dictionary-reader</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>english</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>russian</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-55</artifactId>
+            <version>2.16.2</version>
         </dependency>
 
 

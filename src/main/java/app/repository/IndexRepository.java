@@ -19,7 +19,7 @@ public interface IndexRepository extends PagingAndSortingRepository<Index, Integ
             " query_lemma  USING (lemma_id) where page_id IN " +
             "(SELECT i.page_id FROM " +
             "query_lemma q JOIN index_page i USING (lemma_id)  " +
-            "GROUP BY i.page_id HAVING count(i.page_id) =(SELECT COUNT(*) FROM search_engine.query_lemma)) " +
+            "GROUP BY i.page_id HAVING count(i.page_id) =(SELECT COUNT(*) FROM query_lemma)) " +
             "GROUP BY page_id ) " +
             "SELECT s.url AS site, s.name AS siteName, p.path " +
             "AS uri, p.content AS content, sum_rank/(SELECT MAX(sum_rank) FROM temp_sel) AS relevance " +
@@ -28,10 +28,10 @@ public interface IndexRepository extends PagingAndSortingRepository<Index, Integ
 
     @Query(value = "SELECT COUNT(*) FROM (SELECT  page_id as page_id, SUM( rank_lemma) AS sum_rank " +
             "FROM index_page JOIN" +
-            " query_lemma  USING (lemma_id) where page_id IN " +
+            " query_lemma USING (lemma_id) where page_id IN " +
             "(SELECT i.page_id FROM " +
             "query_lemma q JOIN index_page i USING (lemma_id)  " +
-            "GROUP BY i.page_id HAVING count(i.page_id) =(SELECT COUNT(*) FROM search_engine.query_lemma)) " +
+            "GROUP BY i.page_id HAVING count(i.page_id) =(SELECT COUNT(*) FROM query_lemma)) " +
             "GROUP BY page_id ) query", nativeQuery = true)
     Integer findCountOfPages();
 

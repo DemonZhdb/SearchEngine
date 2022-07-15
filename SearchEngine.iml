@@ -10,11 +10,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="dictionary-reader-1.5" level="project" />
-    <orderEntry type="library" name="english-1.5" level="project" />
-    <orderEntry type="library" name="morph-1.5" level="project" />
-    <orderEntry type="library" name="morphology-1.5" level="project" />
-    <orderEntry type="library" name="russian-1.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.6.4" level="project" />
@@ -48,8 +43,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.6.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.1" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.13.1" level="project" />
@@ -75,7 +68,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.1.2.Final" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.6" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:2.3.6" level="project" />
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
@@ -84,6 +76,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.16" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.16" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.16" level="project" />
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.10" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.13.2" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
@@ -91,5 +84,18 @@
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.14.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene.morphology:morph:1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:8.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers-common:8.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene.analysis:morphology:1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene.morphology:dictionary-reader:1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene.morphology:english:1.5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene.morphology:russian:1.5" level="project" />
+    <orderEntry type="library" name="Maven: com.vladmihalcea:hibernate-types-55:2.16.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.13.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
   </component>
 </module>

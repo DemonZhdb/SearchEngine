@@ -4,7 +4,7 @@ import app.DTO.RelevancePage;
 import app.DTO.ResultSearch;
 import app.DTO.response.ResponseSearch;
 import app.model.Lemma;
-import app.util.lemmatisator;
+import app.util.Lemmatisator;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class SearchService {
     private int resultsNumber;
-    app.util.lemmatisator lemmatisator = new lemmatisator();
+    Lemmatisator lemmatisator = new Lemmatisator();
     HashMap<String, Integer> searchLemmaMap;
     @Autowired
     EntityService entityService;
@@ -64,7 +64,6 @@ public class SearchService {
         }
         Object resultSearch = new ResponseSearch(resultsNumber, createSearchResult(resultQueries,
                 querySearch));
-        System.out.println(resultSearch);
         return resultSearch;
     }
 

@@ -10,5 +10,6 @@ import java.util.List;
 public class StatisticsOut {
 
     private Total total;
+
     private List<Detailed> detailed;
 }

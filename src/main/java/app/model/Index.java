@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "indexPage", schema = "search_engine")
+@Table(name = "indexPage" )
 public class Index {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

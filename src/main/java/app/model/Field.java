@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "field", schema = "search_engine")
+@Table(name = "field" )
 public class Field {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -1,6 +1,10 @@
 package app.model;
 
+
+import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
 import lombok.Data;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,7 +13,12 @@ import java.util.Collection;
 
 @Entity
 @Data
-@Table(name = "site", schema = "search_engine")
+@Table(name = "site")
+@TypeDef(
+        name = "pgsql_enum",
+        typeClass = PostgreSQLEnumType.class
+)
+
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +26,8 @@ public class Site {
     private int id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", columnDefinition = "enum('INDEXING', 'INDEXED', 'FAILED')")
+    @Column(name = "status", columnDefinition = "status_enum")
+    @Type(type = "pgsql_enum")
     private StatusIndexing status;
 
     @Column(name = "status_time")

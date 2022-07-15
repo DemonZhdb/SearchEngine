@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Repository
-public class lemmatisator {
+public class Lemmatisator {
 
     private HashMap<String, Integer> wordsMap;
 
@@ -23,7 +23,7 @@ public class lemmatisator {
     private final String regexpText = "\\s*(\\s|\\?|\\||»|«|\\*|,|!|\\.)\\s*";
     private final LuceneMorphology luceneMorph = new RussianLuceneMorphology();
 
-    public lemmatisator() throws IOException {
+    public Lemmatisator() throws IOException {
     }
 
     public HashMap<String, Integer> textToLemma(String sourceText) {
@@ -72,7 +72,7 @@ public class lemmatisator {
         } else {
             textQuery = textQuery.trim();
             String[] words = textQuery.toLowerCase().split(regexpText);
-            ;
+
             StringBuilder builderSnippet = new StringBuilder();
             RussianStemmer russianStemmer = new RussianStemmer();
 

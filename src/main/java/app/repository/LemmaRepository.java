@@ -16,7 +16,7 @@ public interface LemmaRepository extends CrudRepository<Lemma, Integer> {
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = "INSERT INTO lemma(lemma, site_id, frequency ) " + "VALUES(?,?,?) " +
-            "ON DUPLICATE KEY UPDATE frequency=frequency + 1", nativeQuery = true)
+            "ON CONFLICT ON CONSTRAINT lemma_site DO UPDATE SET frequency= lemma.frequency +1", nativeQuery = true)
     void insertLemmaAndSite(String lemma, Site siteByLemma, int frequency);
 
     Lemma findByLemmaAndSiteByLemma(String lemma, Site siteByLemma);

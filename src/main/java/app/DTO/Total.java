@@ -8,8 +8,11 @@ import lombok.Data;
 public class Total {
 
     private long sites;
+
     private long pages;
+
     private long lemmas;
+
     private boolean isIndexing;
 
 }
