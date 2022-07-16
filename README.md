@@ -18,7 +18,7 @@
 
 
 ## Стек используемых технологий
-Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, REST API, JSOUP, Maven, Git <br>
+Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JSOUP, Maven, Git <br>
 Также  библиотеки лемматизации - RussianMorphology и стемминга (нахождения основы слова) - stemmer.
 
 ## Настройки для запуска
