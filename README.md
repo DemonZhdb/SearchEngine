@@ -54,7 +54,7 @@ Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JS
  postgresql
  jsoup
 ```
-Для подключения зависимостей `morph,morphology,dictionary-reader,english,russian`с `org.apache.lucene.morphology` необходимо ещё создать (либо отредактировать если он имеется -  в  Windows он располагается в директории C:/Users/<Имя вашего пользователя>/.m2) файл settings.xml, в котором указать токен  для получения данных из публичного репозитория. В файл нужно внести следующие строки:
+Для подключения зависимостей `morph, morphology, dictionary-reader, english, russian`из источника : `org.apache.lucene.morphology` необходимо ещё создать (либо отредактировать если он имеется -  в  Windows он располагается в директории C:/Users/<Имя вашего пользователя>/.m2) файл settings.xml, в котором указать токен  для получения данных из публичного репозитория. В файл нужно внести следующие строки:
 ```
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
