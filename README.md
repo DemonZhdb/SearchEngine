@@ -77,8 +77,14 @@ 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</value>
     </servers>
 </settings>
 ```
-<h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
+## Запуск
+Стартовая страница поискового движка находится по адресу : http://localhost:8080/
+Сразу при старте система запрашивает логин/пароль, которые цуказываются  в файле конфигурации `src/resources/application.yml`:
+```
+ security:
+    user:
+      name: user
+      password: user
+      roles: user
 
-
-
-
+```
