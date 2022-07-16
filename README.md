@@ -1,5 +1,5 @@
 
-<h1><a href="https://daniilshat.ru/" target="_blank">SearchEngine </a> -локальный поисковый движок </h1>
+<h1><a href="https://github.com/DemonZhdb/SearchEngine" target="_blank">SearchEngine </a> -локальный поисковый движок </h1>
 <h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
 This project of search bot for one or several sites 
  
