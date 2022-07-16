@@ -25,10 +25,57 @@ Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JS
 ### Зависимости
 Для успешного скачивания и подключения к проекту зависимостей из GitHub необходимо настроить Maven конфигурацию в файле `settings.xml`.
 
-А зависимостях, в файле `pom.xml` добавлен репозиторий для получения jar файлов:
+Для работы системы  в файле `pom.xml` необходимо добавить информацмию о фреймворке:
 ```
-    Здесь может быть
-    Ваша реклама
+<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.4</version>
+</parent>
+```
+а также ссылку на репозиторий для скачивания зависимостей лемматизатора:
+```
+<repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages - Russian Morphology</name>
+            <url>https://maven.pkg.github.com/skillbox-java/russianmorphology</url>
+        </repository>
+    </repositories>
+
+````
+Также нужно указать подключение следующих зависимостей apache Maven:
+
+```
+ spring-boot-starter-security
+ spring-boot-starter-thymeleaf
+ spring-boot-starter-web
+ spring-boot-starter-data-jpa
+ postgresql
+ jsoup
+```
+Для подключения зависимостей `morph,morphology,dictionary-reader,english,russian`с `org.apache.lucene.morphology` необходимо ещё создать (либо отредактировать если он имеется -  в  Windows он располагается в директории C:/Users/<Имя вашего пользователя>/.m2) файл settings.xml, в котором указать токен  для получения данных из публичного репозитория. В файл нужно внести следующие строки:
+```
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+ https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <servers>
+        <server>
+            <id>github</id>
+            <configuration>
+                <httpHeaders>
+                    <property>
+                        <name>Authorization</name>
+                        <value>Bearer 
+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</value>
+                    </property>
+                </httpHeaders>
+            </configuration>
+        </server>
+    </servers>
+</settings>
 ```
 <h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
 
