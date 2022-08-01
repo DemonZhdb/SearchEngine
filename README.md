@@ -54,7 +54,16 @@ Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JS
  postgresql
  jsoup
 ```
-Для подключения зависимостей `morph, morphology, dictionary-reader, english, russian`из источника : `org.apache.lucene.morphology` необходимо ещё создать (либо отредактировать если он имеется -  в  Windows он располагается в директории C:/Users/<Имя вашего пользователя>/.m2) файл settings.xml, в котором указать токен  для получения данных из публичного репозитория. В файл нужно внести следующие строки:
+Для работы парсинга страниц нужно подключить JSOUP :
+```
+<dependency>           
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
+
+```
+Для преобразования слов в леммы неообходимо подключение зависимостей `morph, morphology, dictionary-reader, english, russian`из источника : `org.apache.lucene.morphology` необходимо ещё создать (либо отредактировать если он имеется -  в  Windows он располагается в директории C:/Users/<Имя вашего пользователя>/.m2) файл settings.xml, в котором указать токен  для получения данных из публичного репозитория. В файл нужно внести следующие строки:
 ```
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -77,6 +86,7 @@ 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</value>
     </servers>
 </settings>
 ```
+
 ## Запуск
 Стартовая страница поискового движка находится по адресу : http://localhost:8080/ <br>
 Сразу при старте система запрашивает логин/пароль, которые указаны в файле конфигурации `src/resources/application.yml`:
