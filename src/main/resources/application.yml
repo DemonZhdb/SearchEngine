@@ -21,9 +21,7 @@ spring:
     user:
       name: user
       password: user
-      roles: user
-
-
+      roles: USER
 
 
 configparse:

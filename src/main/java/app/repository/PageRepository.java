@@ -12,7 +12,11 @@ public interface PageRepository extends CrudRepository<Page, Integer> {
 
     Page findByPathAndSiteByPage(String path, Site siteByPage);
 
+    Iterable<Page> findBySiteByPage(Site siteByPage);
+
     long countBySiteByPage(Site siteByPage);
+
+    void deleteBySiteByPage(Site siteByPage);
 
     @Override
     @Modifying

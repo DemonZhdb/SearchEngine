@@ -37,6 +37,8 @@ public interface IndexRepository extends PagingAndSortingRepository<Index, Integ
 
     void deleteByPageByIndex(Page page);
 
+    void deleteByPageByIndexIn(Iterable<Page> pages);
+
     @Override
     @Modifying
     @Query("DELETE FROM Index")

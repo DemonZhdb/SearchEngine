@@ -97,10 +97,23 @@ public class EntityService {
     public void deleteLemmaOfNullFrequency() {
         lemmaRepository.deleteOfFrequencyIsNull();
     }
+    @Transactional
+    public void deleteLemmasOfSite(Site site) {
+        lemmaRepository.deleteBySiteByLemma(site);
+    }
+    @Transactional
+    public void deletePagesOfSite(Site site) {
+        pageRepository.deleteBySiteByPage(site);
+    }
 
     @Transactional
     public void deleteIndexOfPage(Page page) {
         indexRepository.deleteByPageByIndex(page);
+    }
+    @Transactional
+    public void deleteIndexOfSite(Site site) {
+        Iterable<Page> pages = pageRepository.findBySiteByPage(site);
+        indexRepository.deleteByPageByIndexIn(pages);
     }
 
     @Transactional(readOnly = true)

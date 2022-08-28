@@ -101,25 +101,35 @@ public class IndexService {
         return new ResponseTrue("true");
     }
 
-    public Object indexingPage(String url, Site siteOfPage) throws IOException,
+    public Object indexingPage(String url, Site siteUpdating) throws IOException,
             SQLException, ParserConfigurationException {
-        if (!(entityService.findSiteByName(siteOfPage) == null)) {
-            siteOfPage.setId(entityService.findSiteByName(siteOfPage).getId());
+        if (!(entityService.findSiteByName(siteUpdating) == null)) {
+            siteUpdating.setId(entityService.findSiteByName(siteUpdating).getId());
         }
-        siteOfPage.setStatusTime(new Timestamp(System.currentTimeMillis()));
-        Site siteInDB = entityService.updateSite(siteOfPage, StatusIndexing.INDEXING);
-        int pageId = 0;
-        Page page = entityService.getPageByPath(url.substring(siteInDB.getUrl().length()), siteInDB);
-        if (!(page == null)) {
-            pageId = page.getId();
-            entityService.updateLemma(pageId);
-            entityService.deleteLemmaOfNullFrequency();
-            entityService.deleteIndexOfPage(page);
+        siteUpdating.setStatusTime(new Timestamp(System.currentTimeMillis()));
+        Site siteInDB = entityService.updateSite(siteUpdating, StatusIndexing.INDEXING);
+        if (url.equals(siteUpdating.getUrl())){
+            entityService.deleteIndexOfSite(siteUpdating);
+            entityService.deleteLemmasOfSite(siteUpdating);
+            entityService.deletePagesOfSite(siteUpdating);
+            entityService.setIndexingRun(true);
+            entityService.setIndexingStop(false);
+            indexingSite(siteUpdating);
+        }
+        else {
+            int pageId = 0;
+            Page page = entityService.getPageByPath(url.substring(siteInDB.getUrl().length()), siteInDB);
+            if (!(page == null)) {
+                pageId = page.getId();
+                entityService.updateLemma(pageId);
+                entityService.deleteLemmaOfNullFrequency();
+                entityService.deleteIndexOfPage(page);
 
+            }
+            Document doc = getDocumentPage(url, siteInDB);
+            entityService.addEntitiesToDB(doc, url, codeResponse, siteUpdating, pageId);
+            entityService.updateSite(siteUpdating, StatusIndexing.INDEXED);
         }
-        Document doc = getDocumentPage(url, siteInDB);
-        entityService.addEntitiesToDB(doc, url, codeResponse, siteOfPage, pageId);
-        entityService.updateSite(siteOfPage, StatusIndexing.INDEXED);
         return new ResponseTrue("true");
     }
 

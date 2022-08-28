@@ -41,6 +41,7 @@ public class Site {
 
     @Column(name = "name")
     private String name;
+
     @OneToMany(mappedBy = "siteByLemma")
     private Collection<Lemma> lemmasById;
 

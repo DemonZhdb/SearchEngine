@@ -1,6 +1,7 @@
 package app.repository;
 
 import app.model.Lemma;
+import app.model.Page;
 import app.model.Site;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -32,6 +33,8 @@ public interface LemmaRepository extends CrudRepository<Lemma, Integer> {
     long countBySiteByLemma(Site siteByLemma);
 
     List<Lemma> findByLemmaInAndSiteByLemmaOrderByFrequency(List<String> lemmas, Site siteByLemma);
+
+    void deleteBySiteByLemma(Site siteByLemma);
 
     @Modifying
     @Query("DELETE FROM Lemma l WHERE l.frequency=0")
