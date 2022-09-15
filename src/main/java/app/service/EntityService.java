@@ -97,10 +97,12 @@ public class EntityService {
     public void deleteLemmaOfNullFrequency() {
         lemmaRepository.deleteOfFrequencyIsNull();
     }
+
     @Transactional
     public void deleteLemmasOfSite(Site site) {
         lemmaRepository.deleteBySiteByLemma(site);
     }
+
     @Transactional
     public void deletePagesOfSite(Site site) {
         pageRepository.deleteBySiteByPage(site);
@@ -110,6 +112,7 @@ public class EntityService {
     public void deleteIndexOfPage(Page page) {
         indexRepository.deleteByPageByIndex(page);
     }
+
     @Transactional
     public void deleteIndexOfSite(Site site) {
         Iterable<Page> pages = pageRepository.findBySiteByPage(site);
@@ -189,18 +192,18 @@ public class EntityService {
 
         for (String lemma : lemmaMap.keySet()) {
             lemmaRepository.insertLemmaAndSite(lemma, site, 1);
-            int id_lemma = getLemmaByName(lemma, site).getId();
-            mapId.put(id_lemma, lemmaMap.get(lemma));
+            int idLemma = getLemmaByName(lemma, site).getId();
+            mapId.put(idLemma, lemmaMap.get(lemma));
         }
         return mapId;
     }
 
     @Transactional
     public synchronized void indexAddToDB(Page page, HashMap<Integer, Float> idMap, Site site) {
-        idMap.forEach((lemma_id, rank) -> {
+        idMap.forEach((lemmaId, rank) -> {
             Index index = new Index();
             index.setPageByIndex(page);
-            index.setLemmaByIndex(getLemmaById(lemma_id, site));
+            index.setLemmaByIndex(getLemmaById(lemmaId, site));
             index.setRankLemma(rank);
             indexRepository.save(index);
         });

@@ -14,7 +14,7 @@ public class SnowballProgram implements Serializable {
     private void init() {
         cursor = 0;
         limit = current.length();
-        limit_backward = 0;
+        limitBackward = 0;
         bra = cursor;
         ket = limit;
     }
@@ -45,7 +45,7 @@ public class SnowballProgram implements Serializable {
 
     protected int cursor;
     protected int limit;
-    protected int limit_backward;
+    protected int limitBackward;
     protected int bra;
     protected int ket;
 
@@ -53,7 +53,7 @@ public class SnowballProgram implements Serializable {
         current = other.current;
         cursor = other.cursor;
         limit = other.limit;
-        limit_backward = other.limit_backward;
+        limitBackward = other.limitBackward;
         bra = other.bra;
         ket = other.ket;
     }
@@ -62,7 +62,7 @@ public class SnowballProgram implements Serializable {
         current = other.current;
         cursor = other.cursor;
         limit = other.limit;
-        limit_backward = other.limit_backward;
+        limitBackward = other.limitBackward;
         bra = other.bra;
         ket = other.ket;
     }
@@ -78,7 +78,7 @@ public class SnowballProgram implements Serializable {
     }
 
     protected boolean in_grouping_b(char[] s, int min, int max) {
-        if (cursor <= limit_backward) return false;
+        if (cursor <= limitBackward) return false;
         char ch = current.charAt(cursor - 1);
         if (ch > max || ch < min) return false;
         ch -= min;
@@ -103,7 +103,7 @@ public class SnowballProgram implements Serializable {
     }
 
     protected boolean out_grouping_b(char[] s, int min, int max) {
-        if (cursor <= limit_backward) return false;
+        if (cursor <= limitBackward) return false;
         char ch = current.charAt(cursor - 1);
         if (ch > max || ch < min) {
             cursor--;
@@ -128,7 +128,7 @@ public class SnowballProgram implements Serializable {
     }
 
     protected boolean eq_s_b(CharSequence s) {
-        if (cursor - limit_backward < s.length()) return false;
+        if (cursor - limitBackward < s.length()) return false;
         int i;
         for (i = 0; i != s.length(); i++) {
             if (current.charAt(cursor - s.length() + i) != s.charAt(i)) return false;
@@ -144,15 +144,15 @@ public class SnowballProgram implements Serializable {
         int c = cursor;
         int l = limit;
 
-        int common_i = 0;
-        int common_j = 0;
+        int commonI = 0;
+        int commonJ = 0;
 
-        boolean first_key_inspected = false;
+        boolean firstKeyInspected = false;
 
         while (true) {
             int k = i + ((j - i) >> 1);
             int diff = 0;
-            int common = common_i < common_j ? common_i : common_j; // smaller
+            int common = commonI < commonJ ? commonI : commonJ; // smaller
             Among w = v[k];
             int i2;
             for (i2 = common; i2 < w.s.length; i2++) {
@@ -166,10 +166,10 @@ public class SnowballProgram implements Serializable {
             }
             if (diff < 0) {
                 j = k;
-                common_j = common;
+                commonJ = common;
             } else {
                 i = k;
-                common_i = common;
+                commonI = common;
             }
             if (j - i <= 1) {
                 if (i > 0) break; // v->s has been inspected
@@ -179,13 +179,13 @@ public class SnowballProgram implements Serializable {
                 // v->s inspected. This looks messy, but is actually
                 // the optimal approach.
 
-                if (first_key_inspected) break;
-                first_key_inspected = true;
+                if (firstKeyInspected) break;
+                firstKeyInspected = true;
             }
         }
         while (true) {
             Among w = v[i];
-            if (common_i >= w.s.length) {
+            if (commonI >= w.s.length) {
                 cursor = c + w.s.length;
                 if (w.method == null) return w.result;
                 boolean res;
@@ -202,7 +202,7 @@ public class SnowballProgram implements Serializable {
                 cursor = c + w.s.length;
                 if (res) return w.result;
             }
-            i = w.substring_i;
+            i = w.substringI;
             if (i < 0) return 0;
         }
     }
@@ -213,17 +213,17 @@ public class SnowballProgram implements Serializable {
         int j = v.length;
 
         int c = cursor;
-        int lb = limit_backward;
+        int lb = limitBackward;
 
-        int common_i = 0;
-        int common_j = 0;
+        int commonI = 0;
+        int commonJ = 0;
 
-        boolean first_key_inspected = false;
+        boolean firstKeyInspected = false;
 
         while (true) {
             int k = i + ((j - i) >> 1);
             int diff = 0;
-            int common = common_i < common_j ? common_i : common_j;
+            int common = commonI < commonJ ? commonI : commonJ;
             Among w = v[k];
             int i2;
             for (i2 = w.s.length - 1 - common; i2 >= 0; i2--) {
@@ -237,21 +237,21 @@ public class SnowballProgram implements Serializable {
             }
             if (diff < 0) {
                 j = k;
-                common_j = common;
+                commonJ = common;
             } else {
                 i = k;
-                common_i = common;
+                commonI = common;
             }
             if (j - i <= 1) {
                 if (i > 0) break;
                 if (j == i) break;
-                if (first_key_inspected) break;
-                first_key_inspected = true;
+                if (firstKeyInspected) break;
+                firstKeyInspected = true;
             }
         }
         while (true) {
             Among w = v[i];
-            if (common_i >= w.s.length) {
+            if (commonI >= w.s.length) {
                 cursor = c - w.s.length;
                 if (w.method == null) return w.result;
 
@@ -269,20 +269,20 @@ public class SnowballProgram implements Serializable {
                 cursor = c - w.s.length;
                 if (res) return w.result;
             }
-            i = w.substring_i;
+            i = w.substringI;
             if (i < 0) return 0;
         }
     }
 
-    /* to replace chars between c_bra and c_ket in current by the
+    /* to replace chars between cBra and cKet in current by the
      * chars in s.
      */
-    protected int replace_s(int c_bra, int c_ket, String s) {
-        int adjustment = s.length() - (c_ket - c_bra);
-        current.replace(c_bra, c_ket, s);
+    protected int replace_s(int cBra, int cKet, String s) {
+        int adjustment = s.length() - (cKet - cBra);
+        current.replace(cBra, cKet, s);
         limit += adjustment;
-        if (cursor >= c_ket) cursor += adjustment;
-        else if (cursor > c_bra) cursor = c_bra;
+        if (cursor >= cKet) cursor += adjustment;
+        else if (cursor > cBra) cursor = cBra;
         return adjustment;
     }
 
@@ -315,14 +315,14 @@ public class SnowballProgram implements Serializable {
         slice_from("");
     }
 
-    protected void insert(int c_bra, int c_ket, String s) {
-        int adjustment = replace_s(c_bra, c_ket, s);
-        if (c_bra <= bra) bra += adjustment;
-        if (c_bra <= ket) ket += adjustment;
+    protected void insert(int cBra, int cKet, String s) {
+        int adjustment = replace_s(cBra, cKet, s);
+        if (cBra <= bra) bra += adjustment;
+        if (cBra <= ket) ket += adjustment;
     }
 
-    protected void insert(int c_bra, int c_ket, CharSequence s) {
-        insert(c_bra, c_ket, s.toString());
+    protected void insert(int cBra, int cKet, CharSequence s) {
+        insert(cBra, cKet, s.toString());
     }
 
     /* Copy the slice into the supplied StringBuilder */
@@ -335,26 +335,6 @@ public class SnowballProgram implements Serializable {
         s.replace(0, s.length(), current.substring(0, limit));
     }
 
-/*
-extern void debug(struct SN_env * z, int number, int line_count)
-{   int i;
-    int limit = SIZE(z->p);
-    //if (number >= 0) printf("%3d (line %4d): '", number, line_count);
-    if (number >= 0) printf("%3d (line %4d): [%d]'", number, line_count,limit);
-    for (i = 0; i <= limit; i++)
-    {   if (z->lb == i) printf("{");
-        if (z->bra == i) printf("[");
-        if (z->c == i) printf("|");
-        if (z->ket == i) printf("]");
-        if (z->l == i) printf("}");
-        if (i < limit)
-        {   int ch = z->p[i];
-            if (ch == 0) ch = '#';
-            printf("%c", ch);
-        }
-    }
-    printf("'\n");
-}
-*/
+
 
 };

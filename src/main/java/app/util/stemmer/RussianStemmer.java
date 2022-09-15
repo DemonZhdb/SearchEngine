@@ -490,14 +490,14 @@ public boolean stem() {
     }
     cursor = v_1;
     r_mark_regions();
-    limit_backward = cursor;
+    limitBackward = cursor;
     cursor = limit;
     if (cursor < I_pV)
     {
         return false;
     }
-    int v_6 = limit_backward;
-    limit_backward = I_pV;
+    int v_6 = limitBackward;
+    limitBackward = I_pV;
     int v_7 = limit - cursor;
     lab4: {
         lab5: {
@@ -561,8 +561,8 @@ public boolean stem() {
     int v_13 = limit - cursor;
     r_tidy_up();
     cursor = limit - v_13;
-    limit_backward = v_6;
-    cursor = limit_backward;
+    limitBackward = v_6;
+    cursor = limitBackward;
     return true;
 }
 

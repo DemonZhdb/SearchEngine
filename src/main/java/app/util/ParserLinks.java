@@ -29,7 +29,7 @@ public class ParserLinks extends RecursiveAction {
     private int codeResponse;
     private ParserConfig parserConfig;
     private EntityService entityService;
-    public static final String regexpText = "\\s*(\\s|\\?|\\||»|«|\\*|,|!|\\.)\\s*";
+
 
 
     public ParserLinks(String url, Site site, Set<String> linksSet) {

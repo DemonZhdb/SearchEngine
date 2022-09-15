@@ -18,9 +18,9 @@ public class Lemmatisator {
 
     private HashMap<String, Integer> wordsMap;
 
-    private final String regexpWord = "[а-яА-ЯёЁ]+";
+    private static final String REGEXP_WORD = "[а-яА-ЯёЁ]+";
 
-    private final String regexpText = "\\s*(\\s|\\?|\\||»|«|\\*|,|!|\\.)\\s*";
+    private static final String REGEXP_TEXT = "\\s*(\\s|\\?|\\||»|«|\\*|,|!|\\.)\\s*";
     private final LuceneMorphology luceneMorph = new RussianLuceneMorphology();
 
     public Lemmatisator() throws IOException {
@@ -30,7 +30,7 @@ public class Lemmatisator {
         wordsMap = new HashMap<>();
         String text = sourceText.trim();
 
-        String[] words = text.toLowerCase().split(regexpText);
+        String[] words = text.toLowerCase().split(REGEXP_TEXT);
 
         for (String word : words) {
             if (wordCheck(word)) {
@@ -45,7 +45,7 @@ public class Lemmatisator {
 
     public boolean wordCheck(String word) {
 
-        if (word.matches(regexpWord)) {
+        if (word.matches(REGEXP_WORD)) {
             List<String> wordBaseForms =
                     luceneMorph.getMorphInfo(word);
             if ((!wordBaseForms.get(0).endsWith("ПРЕДЛ") && (!wordBaseForms.get(0).endsWith("СОЮЗ")) &&
@@ -71,7 +71,7 @@ public class Lemmatisator {
 
         } else {
             textQuery = textQuery.trim();
-            String[] words = textQuery.toLowerCase().split(regexpText);
+            String[] words = textQuery.toLowerCase().split(REGEXP_TEXT);
 
             StringBuilder builderSnippet = new StringBuilder();
             RussianStemmer russianStemmer = new RussianStemmer();
