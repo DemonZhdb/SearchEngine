@@ -98,3 +98,16 @@ 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</value>
       roles: user
 
 ```
+## OpenAPI
+Для реализации взаимодействия системы SearchEngine со сторонними приложениями в проекте реализована документация OpenAPI, 
+которая представляет собой спецификацию с описанием всех методов: создания, использования,  визуализации  и тестирования 
+веб-сервисов REST Страница с документацией OpenAPI доступна по адресу :http://localhost:8080/swagger-ui.html <br>
+Для настройки документирования OenAPI необходимо подключить зависимость из репозитория springdoc:
+```
+  <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.11</version>
+        </dependency>
+
+```

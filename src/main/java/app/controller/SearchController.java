@@ -1,25 +1,23 @@
 package app.controller;
 
 import app.DTO.response.ResponseError;
-import app.config.SiteConfig;
-import app.model.Site;
-import app.service.EntityService;
-import app.service.IndexService;
 import app.service.SearchService;
-import app.service.StatisticsService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@Tag(name = "Поиск текста", description = "Поиск строки текста на сайтах из списка в конфигурации")
 public class SearchController {
 
     @Autowired

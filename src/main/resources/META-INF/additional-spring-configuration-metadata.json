@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "url.default",
+      "type": "java.lang.String",
+      "description": "Description for url.default."
+  }
+] }
