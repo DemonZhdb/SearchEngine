@@ -18,7 +18,7 @@
 
 
 ## Стек используемых технологий
-Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JSOUP, Maven, Git <br>
+Java Core, Spring Boot, JPA, Hibernate, JDBC, Security, PostgreSQL, REST API, JSOUP, Maven, Git, Swagger <br>
 Также  библиотеки лемматизации - RussianMorphology и стемминга (нахождения основы слова) - stemmer.
 
 ## Настройки для запуска
@@ -99,7 +99,7 @@ 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</value>
 
 ```
 ## OpenAPI
-Для реализации взаимодействия системы SearchEngine со сторонними приложениями в проекте реализована документация OpenAPI, 
+Для реализации взаимодействия системы SearchEngine со сторонними приложениями в проекте на базе Swagger(OpenAPI 3.0) реализована документация OpenAPI, 
 которая представляет собой спецификацию с описанием всех методов: создания, использования,  визуализации  и тестирования 
 веб-сервисов REST Страница с документацией OpenAPI доступна по адресу :http://localhost:8080/swagger-ui.html <br>
 Для настройки документирования OenAPI необходимо подключить зависимость из репозитория springdoc:
